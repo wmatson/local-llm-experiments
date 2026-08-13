@@ -1,0 +1,24 @@
+Create a complete "Idle Skill Tree" game as a static HTML file (containing any necessary <script src=...> tags to split up logic files). Use Test-Driven Development (TDD) principles for the logic.
+
+**Game Mechanics:**
+1.  **Core Loop**: The player gains **Experience (XP)** to level up. Every time they level up, they gain **1 Skill Point (SP)**.
+2.  **Node 1: Spark of Insight (Tier 1)**: The starting node. Click to gain 10 XP. It is free to click and has no upgrade cost.
+3.  **Node 2: Meditation (Tier 2)**: Unlocked immediately. Gains XP per second.
+    *   *Cost*: $2^{\text{level}}$ Skill Points.
+4.  **Node 3: Focused Mind (Tier 3)**: Unlocked by buying Meditation. Increases the XP gain of Meditation per second.
+    *   *Cost*: $(3^{\text{level}}) + 1$ Skill Points.
+5.  **Node 4: Resonance (Tier 3)**: Unlocked by buying Meditation. Reduces the XP cost required to level up.
+    *   *Cost*: $(3^{\text{level}}) + 1$ Skill Points.
+6.  **Node 5: Willpower (Tier 3)**: Unlocked by buying Meditation. Increases the XP gain of "Spark of Insight" clicks by a multiplier ($1 + 0.5 \times \text{level}$).
+    *   *Cost*: $(3^{\text{level}}) + 1$ Skill Points.
+7.  **Node 6: Arcane Flow (Tier 4)**: Unlocks when the player reaches **Level 10**. Adds flat XP to every "Spark of Insight" click.
+    *   *Cost*: $(5^{\text{level}}) + 1$ Skill Points.
+8.  **Node 7: Transcendence (Tier 5)**: Unlocks when the player reaches **Level 25**. Gives a percentage chance on every click to gain double XP.
+    *   *Cost*: $(8^{\text{level}}) + 1$ Skill Points.
+
+**Technical Requirements:**
+1.  **TDD**: Write a `tests.js` script first that validates the math (e.g., verifying that Meditation costs scale geometrically, that Resonance correctly reduces level-up costs, etc.).
+2.  **Game Engine**: A class `SkillTreeGame` that encapsulates all state and logic.
+3.  **UI**: A clean, dark-mode interface.
+    *   Left side: Stats (XP, Level, Skill Points).
+    *   Right side: The skill tree visualization.
