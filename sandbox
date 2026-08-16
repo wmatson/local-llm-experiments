@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+# Bubblewrap's required new session deliberately drops the original controlling
+# terminal. `script` gives the interactive Bash child a fresh PTY so job control
+# still works without changing the sandbox policy used by sandbox-run.
+exec "${repo_root}/.sandbox/bwrap.sh" "$@" -- script -qefc bash /dev/null
